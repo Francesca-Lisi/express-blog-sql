@@ -1,0 +1,25 @@
+{
+  "name": "express-blog-sql",
+  "version": "1.0.0",
+  "description": "Express Blog Sql === Esercizio 05/02/2025 ## Consegna Prendiamo le API precedentemente create per il vostro blog ed aggiungiamo la persistenza tramite la connessione a un DB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Francesca-Lisi/express-blog-sql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Francesca-Lisi/express-blog-sql/issues"
+  },
+  "homepage": "https://github.com/Francesca-Lisi/express-blog-sql#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
