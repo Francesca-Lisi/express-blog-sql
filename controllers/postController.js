@@ -11,18 +11,38 @@ const index = (req, res) => {
 
 const show = (req, res) => {
   const id = req.params.id;
-  const sql = 'SELECT * FROM posts WHERE id = ?';
+  const sql = `SELECT posts.*, tags.id AS tag_id, tags.label AS tag_label
+  FROM posts
+  JOIN post_tag ON posts.id = post_tag.post_id
+  JOIN tags ON tags.id = post_tag.tag_id
+  WHERE posts.id = ?`;
+
 
   connection.query(sql, [id], (err, results) => {
     //controlli
     if (err) return res.status(500).json({ error: 'Query fallita' })
     if (results.length === 0) return res.status(404).json({ error: 'Post non trovato' });
 
+    //creo l'oggetto che conterrà l'array da popolare dei tags
 
-    //risultato
-    console.log(results);
-    const post = results[0]
-    res.json(post);
+    const postObj = {
+      id: results[0].id,
+      title: results[0].title,
+      content: results[0].content,
+      image: results[0].image,
+      tags: []
+    }
+
+    results.forEach(item => {
+      postObj.tags.push({
+        id: item.tag_id,
+        label: item.tag_label
+      })
+    })
+
+
+    res.json(postObj);
+
   })
 }
 
