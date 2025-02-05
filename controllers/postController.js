@@ -1,3 +1,6 @@
+//import connessione al database
+const connection = require('../data/db')
+
 const index = (req, res) => {
   res.send('Elenco post')
 }
